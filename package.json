@@ -1,0 +1,18 @@
+{
+  "homepage": "http://github.com/glyphrider/roman.js",
+  "license": "NLPL",
+  "devDependencies": {
+    "jest": "latest",
+    "ts-jest": "latest",
+    "@types/jest": "latest"
+  },
+  "dependencies": {
+    "yarn": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  }
+}
+
