@@ -2,7 +2,7 @@ import Roman from '../src/roman';
 const { TestScheduler } = require('jest');
 const roman = new Roman();
 
-var testCases:Array<Array<any>> = [
+var testCases:any[][] = [
     [1, 'I'],
     [2, 'II'],
     [3, 'III'],
