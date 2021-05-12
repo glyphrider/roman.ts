@@ -5,7 +5,7 @@ interface ITranslation {
 
 export default class Roman {
 
-    data: Array<ITranslation> = [
+    data: ITranslation[] = [
         { arabic: 1, roman: 'I' },
         { arabic: 4, roman: 'IV' },
         { arabic: 5, roman: 'V' },
