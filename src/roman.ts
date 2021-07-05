@@ -1,24 +1,34 @@
-interface ITranslation {
-    arabic: number,
-    roman: string
+class Translation {
+    arabic: number;
+    roman: string;
+    constructor(arabic: number, roman: string) {
+        this.arabic = arabic;
+	this.roman = roman;
+    };
+    starts(str: string): boolean {
+        return str.startsWith(this.roman);
+    };
+    bigEnough(num: number): boolean {
+	return num >= this.arabic;
+    };
 };
 
 export default class Roman {
 
-    data: ITranslation[] = [
-        { arabic: 1, roman: 'I' },
-        { arabic: 4, roman: 'IV' },
-        { arabic: 5, roman: 'V' },
-        { arabic: 9, roman: 'IX' },
-        { arabic: 10, roman: 'X' },
-        { arabic: 40, roman: 'XL' },
-        { arabic: 50, roman: 'L' },
-	{ arabic: 90, roman: 'XC' },
-	{ arabic: 100, roman: 'C' },
-	{ arabic: 400, roman: 'CD' },
-	{ arabic: 500, roman: 'D' },
-	{ arabic: 900, roman: 'CM' },
-	{ arabic: 1000, roman: 'M' }
+    data: Translation[] = [
+        new Translation(1, 'I'),
+        new Translation(4, 'IV'),
+        new Translation(5, 'V'),
+        new Translation(9, 'IX'),
+        new Translation(10, 'X'),
+        new Translation(40, 'XL'),
+        new Translation(50, 'L'),
+	new Translation(90, 'XC'),
+	new Translation(100, 'C'),
+	new Translation(400, 'CD'),
+	new Translation(500, 'D'),
+	new Translation(900, 'CM'),
+	new Translation(1000, 'M')
     ];
 
     constructor() {
@@ -27,8 +37,8 @@ export default class Roman {
 
     toRoman(num: number): string {
         let result: string = '';
-        this.data.forEach((elem: ITranslation) => {
-            while(num >= elem.arabic) {
+        this.data.forEach((elem: Translation) => {
+            while(elem.bigEnough(num)) {
                 result += elem.roman;
                 num -= elem.arabic;
             }
@@ -38,8 +48,8 @@ export default class Roman {
 
     toArabic(str: string): number {
         let result: number = 0;
-        this.data.forEach((elem: ITranslation) => {
-            while(str.startsWith(elem.roman)) {
+        this.data.forEach((elem: Translation) => {
+            while(elem.starts(str)) {
                 result += elem.arabic;
                 str = str.substring(elem.roman.length);
             }
